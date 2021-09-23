@@ -52,6 +52,8 @@ def on_frame_handler(frame_num, outfile, rewrite=True, sample_rate=96000, fps=30
             
             for layer in gp.layers:
                 frame = layer.active_frame
+                if frame is None:
+                    continue
                 for stroke in frame.strokes:
                     line = []
                     for point in stroke.points:
@@ -138,7 +140,7 @@ bl_info={
         "warning": "",
         "wiki_url":"https://github.com/ed9m/XYRender",
         "tracker_url": "",
-        "version":(0,1,0)
+        "version":(0,1,1)
     }
 
 def register():
